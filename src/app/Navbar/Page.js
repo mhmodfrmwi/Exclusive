@@ -10,10 +10,10 @@ export default function Navbar() {
   const [state, setState] = React.useState(true);
 
   const menus = [
-    { title: "Home", path: "/your-path" },
-    { title: "Contact", path: "/your-path" },
-    { title: "About", path: "/your-path" },
-    { title: "Sign Up", path: "/your-path" },
+    { title: "Home", path: "/" },
+    { title: "Contact", path: "/contact" },
+    { title: "About", path: "/about" },
+    { title: "Sign Up", path: "/sign up" },
   ];
   useEffect(() => {
     const handleResize = () => {
@@ -30,7 +30,7 @@ export default function Navbar() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
   return (
-    <nav className={`bg-white w-full border-b md:border-0`}>
+    <nav className={`bg-white w-full border-b md:border-0 shadow p-2`}>
       <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
         <div className="flex items-center justify-between py-3 md:py-5 md:block">
           <Link href="/">
