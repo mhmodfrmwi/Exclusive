@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 
 export default function Footer() {
   return (
-    <div className="flex justify-around p-20 bg-black text-slate-50 w-auto h-auto max-[430px]:flex-col ">
+    <div className="flex flex-col justify-around gap-5 p-20 bg-black text-slate-50 w-auto h-auto md:flex-row lg:flex-row">
       {" "}
       <ul className="flex flex-col gap-4">
         <li>

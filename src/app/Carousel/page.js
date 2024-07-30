@@ -29,24 +29,24 @@ export default function CarouselComponent() {
     <div className="p-6">
       <Carousel
         plugins={[plugin.current]}
-        className="w-full "
+        className="w-full"
         onMouseEnter={plugin.current.stop}
         onMouseLeave={plugin.current.reset}
       >
         <CarouselContent className="">
           {Images.homeSlide.map((slide, index) => (
             <CarouselItem key={index}>
-              <div className="">
-                <Card>
-                  <CardContent className="flex items-center justify-center p-0">
-                    <Image
-                      src={slide}
-                      alt={`Slide ${index + 1}`}
-                      width={500}
-                      height={300}
-                    />
-                  </CardContent>
-                </Card>
+              <div className="flex items-center justify-center p-0">
+                {/* <Card>
+                  <CardContent className="flex items-center justify-center p-0"> */}
+                <Image
+                  src={slide}
+                  alt={`Slide ${index + 1}`}
+                  width={500}
+                  height={300}
+                />
+                {/* </CardContent>
+                </Card> */}
               </div>
             </CarouselItem>
           ))}

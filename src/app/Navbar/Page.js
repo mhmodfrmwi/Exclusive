@@ -13,7 +13,7 @@ export default function Navbar() {
     { title: "Home", path: "/" },
     { title: "Contact", path: "/contact" },
     { title: "About", path: "/about" },
-    { title: "Sign Up", path: "/sign up" },
+    { title: "Sign Up", path: "/signup" },
   ];
   useEffect(() => {
     const handleResize = () => {
