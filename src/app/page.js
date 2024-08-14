@@ -3,7 +3,7 @@ import Image from "next/image";
 import TodayComponent from "./TodayComponent/page";
 export default function Home() {
   return (
-    <div className="container">
+    <div className="container ">
       <TodayComponent />
     </div>
   );
