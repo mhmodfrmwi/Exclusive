@@ -18,8 +18,10 @@ export default function TodayComponent() {
         <div className="w-5 h-10 rounded-sm bg-red-600"></div>
         <p className="font-semibold text-base text-red-600">Today’s</p>
       </div>
-      <div className="flex gap-20 items-center max-[640px]:flex-col max-[640px]:gap-10">
-        <h1 className="text-4xl font-semibold text-gray-900">Flash Sales</h1>
+      <div className="flex gap-20 items-start max-[640px]:flex-col max-[640px]:gap-10">
+        <h1 className="text-4xl font-semibold text-gray-900 my-auto">
+          Flash Sales
+        </h1>
         <div className="grid grid-flow-col gap-5 text-center auto-cols-max">
           <div className="flex flex-col">
             days
