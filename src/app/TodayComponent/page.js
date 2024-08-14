@@ -49,12 +49,12 @@ export default function TodayComponent() {
           </div>
         </div>
       </div>
-      <Carousel className="w-11/12 mx-auto">
+      <Carousel className="w-full mx-auto">
         <CarouselContent className="-ml-1">
           {Array.from({ length: 5 }).map((_, index) => (
             <CarouselItem
               key={index}
-              className="pl-1 md:basis-1/2 lg:basis-1/3"
+              className="pl-1 basis-1/2 md:basis-1/3 lg:basis-1/4"
             >
               <div className="p-1">
                 <Card>
