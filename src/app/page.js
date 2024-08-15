@@ -4,6 +4,8 @@ import TodayComponent from "./TodayComponent/page";
 import CategoryComponent from "./CategoryComponent/page";
 import BestSellingComponent from "./BestSellingComponent/page";
 import ImageComponent from "./ImageComponent/page";
+import OurProductsComponents from "./OurProductsComponent/page";
+import NewArrival from "./NewArrival/page";
 export default function Home() {
   return (
     <div className="container gap-4 ">
@@ -11,6 +13,8 @@ export default function Home() {
       <CategoryComponent />
       <BestSellingComponent />
       <ImageComponent />
+      <OurProductsComponents />
+      <NewArrival />
     </div>
   );
 }

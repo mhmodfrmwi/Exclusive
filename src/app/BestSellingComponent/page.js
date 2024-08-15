@@ -8,7 +8,7 @@ import {
 
 const BestSellingComponent = () => {
   return (
-    <div className="py-4 w-11/12 mx-auto flex flex-col gap-4">
+    <div className="py-4 w-10/12 mx-auto flex flex-col gap-6 mt-6">
       <div className="flex gap-3 items-center">
         <div className="w-5 h-10 rounded-sm bg-red-600"></div>
         <p className="font-semibold text-base text-red-600">This Month</p>

@@ -13,7 +13,7 @@ export default function TodayComponent() {
     setTimeout((counter) => counter--, 1000);
   };
   return (
-    <div className="py-4 w-11/12 mx-auto flex flex-col gap-4">
+    <div className="py-4 w-10/12 mx-auto flex flex-col gap-6 mt-6">
       <div className="flex gap-3 items-center">
         <div className="w-5 h-10 rounded-sm bg-red-600"></div>
         <p className="font-semibold text-base text-red-600">Today’s</p>
@@ -25,25 +25,25 @@ export default function TodayComponent() {
         <div className="grid grid-flow-col gap-5 text-center auto-cols-max">
           <div className="flex flex-col">
             days
-            <span className="countdown font-mono text-5xl">
+            <span className="countdown font-mono text-4xl">
               <span style={{ "--value": 15 }}></span>
             </span>
           </div>
           <div className="flex flex-col">
             hours
-            <span className="countdown font-mono text-5xl">
+            <span className="countdown font-mono text-4xl">
               <span style={{ "--value": 10 }}></span>
             </span>
           </div>
           <div className="flex flex-col">
             min
-            <span className="countdown font-mono text-5xl">
+            <span className="countdown font-mono text-4xl">
               <span style={{ "--value": 24 }}></span>
             </span>
           </div>
           <div className="flex flex-col">
             sec
-            <span className="countdown font-mono text-5xl">
+            <span className="countdown font-mono text-4xl">
               <span style={{ "--value": counter }}></span>
             </span>
           </div>

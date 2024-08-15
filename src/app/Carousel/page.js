@@ -32,7 +32,7 @@ export default function CarouselComponent() {
                 <Image
                   src={slide}
                   alt={`Slide ${index + 1}`}
-                  width={1200}
+                  width={1100}
                   height={300}
                 />
               </div>
