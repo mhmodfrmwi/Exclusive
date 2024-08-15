@@ -107,7 +107,7 @@ const NewArrival = () => {
           </p>
         </div>
         <div className="flex flex-col gap-4 items-center">
-          <Image alt="image" src="" />{" "}
+          <Image alt="image" src={services} />{" "}
           <h1 className="text-xl font-semibold text-black">
             24/7 CUSTOMER SERVICE
           </h1>
