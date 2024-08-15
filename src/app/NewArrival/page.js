@@ -3,7 +3,7 @@ import speakers from "../../assets/echo.svg";
 import perfume from "../../assets/perfume.svg";
 import Link from "next/link";
 import delivery from "../../assets/delivery.svg";
-// import services from "../../assets/services.svg";
+import services from "../../assets/services.svg";
 import moneyBack from "../../assets/moneyback.svg";
 import Image from "next/image";
 const NewArrival = () => {
