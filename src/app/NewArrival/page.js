@@ -3,7 +3,6 @@ import speakers from "../../assets/echo.svg";
 import perfume from "../../assets/perfume.svg";
 import Link from "next/link";
 import delivery from "../../assets/delivery.svg";
-import services from "../../assets/services.svg";
 import moneyBack from "../../assets/moneyback.svg";
 import Image from "next/image";
 const NewArrival = () => {
@@ -107,7 +106,7 @@ const NewArrival = () => {
           </p>
         </div>
         <div className="flex flex-col gap-4 items-center">
-          <Image alt="image" src={services} />{" "}
+          <Image alt="image" src={moneyBack} />{" "}
           <h1 className="text-xl font-semibold text-black">
             24/7 CUSTOMER SERVICE
           </h1>
