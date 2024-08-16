@@ -6,9 +6,10 @@ import BestSellingComponent from "./BestSellingComponent/page";
 import ImageComponent from "./ImageComponent/page";
 import OurProductsComponents from "./OurProductsComponent/page";
 import NewArrival from "./NewArrival/page";
+import CardComponent from "@/components/ui/CardComponent";
 export default function Home() {
   return (
-    <div className="container gap-4 ">
+    <div className="container gap-4">
       <TodayComponent />
       <CategoryComponent />
       <BestSellingComponent />

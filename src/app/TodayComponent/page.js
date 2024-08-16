@@ -1,5 +1,7 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import CardComponent from "@/components/ui/CardComponent";
 import {
   Carousel,
   CarouselContent,
@@ -7,11 +9,16 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import products from "../data.js";
+import { useEffect } from "react";
 export default function TodayComponent() {
   let counter = 60;
   const secondsHandler = (counter) => {
     setTimeout((counter) => counter--, 1000);
   };
+  useEffect(() => {
+    console.log(products);
+  }, {});
   return (
     <div className="py-4 w-10/12 mx-auto flex flex-col gap-6 mt-6">
       <div className="flex gap-3 items-center">
@@ -51,17 +58,17 @@ export default function TodayComponent() {
       </div>
       <Carousel className="w-full mx-auto">
         <CarouselContent className="-ml-1">
-          {Array.from({ length: 5 }).map((_, index) => (
+          {Array.from({ length: products.length / 3 }).map((_, index) => (
             <CarouselItem
               key={index}
               className="pl-1 basis-1/2 md:basis-1/3 lg:basis-1/4"
             >
               <div className="p-1">
-                <Card>
-                  <CardContent className="flex aspect-square items-center justify-center p-6">
-                    <span className="text-2xl font-semibold">{index + 1}</span>
-                  </CardContent>
-                </Card>
+                <CardComponent
+                  image={products[index].images[0]}
+                  title={products[index].title}
+                  price={products[index].price}
+                />
               </div>
             </CarouselItem>
           ))}

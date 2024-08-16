@@ -1,11 +1,14 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import CardComponent from "@/components/ui/CardComponent";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-
+import products from "../data";
 const BestSellingComponent = () => {
   return (
     <div className="py-4 w-10/12 mx-auto flex flex-col gap-6 mt-6">
@@ -30,11 +33,11 @@ const BestSellingComponent = () => {
               className="pl-1 basis-1/2 md:basis-1/3 lg:basis-1/4"
             >
               <div className="p-1">
-                <Card>
-                  <CardContent className="flex aspect-square items-center justify-center p-6">
-                    <span className="text-2xl font-semibold">{index + 1}</span>
-                  </CardContent>
-                </Card>
+                <CardComponent
+                  image={products[index].images[0]}
+                  title={products[index].title}
+                  price={products[index].price}
+                />
               </div>
             </CarouselItem>
           ))}
