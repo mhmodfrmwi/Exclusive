@@ -1,5 +1,4 @@
 "use client";
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import CardComponent from "@/components/ui/CardComponent";
@@ -8,8 +7,17 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import products from "../data";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { useEffect } from "react";
+import { fetchProducts } from "../rtk/products-slice";
+import ProductsComponent from "@/components/ui/ProductsComponent";
 const BestSellingComponent = () => {
+  const products = useAppSelector((state) => state.products);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchProducts());
+    console.log(products);
+  }, []);
   return (
     <div className="py-4 w-10/12 mx-auto flex flex-col gap-6 mt-6">
       <div className="flex gap-3 items-center">
@@ -25,24 +33,7 @@ const BestSellingComponent = () => {
           View All
         </Button>
       </div>
-      <Carousel className="w-full mx-auto">
-        <CarouselContent className="-ml-1">
-          {Array.from({ length: 4 }).map((_, index) => (
-            <CarouselItem
-              key={index}
-              className="pl-1 basis-1/2 md:basis-1/3 lg:basis-1/4"
-            >
-              <div className="p-1">
-                <CardComponent
-                  image={products[index].images[0]}
-                  title={products[index].title}
-                  price={products[index].price}
-                />
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-      </Carousel>
+      <ProductsComponent products={products} navigations={false} />
     </div>
   );
 };

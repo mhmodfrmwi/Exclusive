@@ -1,15 +1,21 @@
 "use client";
-
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import CardComponent from "@/components/ui/CardComponent";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import products from "../data";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { useEffect } from "react";
+import { fetchProducts } from "../rtk/products-slice";
+import ProductsComponent from "@/components/ui/ProductsComponent";
 const OurProductsComponents = () => {
+  const products = useAppSelector((state) => state.products);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
   return (
     <div className="py-4 w-10/12 mx-auto flex flex-col gap-6 mt-6">
       <div className="flex gap-3 items-center">
@@ -19,42 +25,8 @@ const OurProductsComponents = () => {
       <h1 className="text-3xl font-semibold text-gray-900">
         Explore Our Products
       </h1>
-      <Carousel className="w-full mx-auto">
-        <CarouselContent className="-ml-1">
-          {Array.from({ length: 4 }).map((_, index) => (
-            <CarouselItem
-              key={index}
-              className="pl-1 basis-1/2 md:basis-1/3 lg:basis-1/4"
-            >
-              <div className="p-1">
-                <CardComponent
-                  image={products[index].images[0]}
-                  title={products[index].title}
-                  price={products[index].price}
-                />
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-      </Carousel>
-      <Carousel className="w-full mx-auto">
-        <CarouselContent className="-ml-1">
-          {Array.from({ length: 4 }).map((_, index) => (
-            <CarouselItem
-              key={index}
-              className="pl-1 basis-1/2 md:basis-1/3 lg:basis-1/4"
-            >
-              <div className="p-1">
-                <CardComponent
-                  image={products[index].images[0]}
-                  title={products[index].title}
-                  price={products[index].price}
-                />
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-      </Carousel>
+      <ProductsComponent products={products} navigations={true} />
+      <ProductsComponent products={products} navigations={true}/>
       <div className="flex w-full justify-center">
         <Button className="bg-red-600 w-56" size="lg">
           {" "}

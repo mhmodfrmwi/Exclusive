@@ -1,24 +1,16 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import CardComponent from "@/components/ui/CardComponent";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import products from "../data.js";
 import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks.js";
+import CountDown from "./countDown.jsx";
+import ProductsComponent from "@/components/ui/ProductsComponent.jsx";
+import { fetchProducts } from "../rtk/products-slice.js";
 export default function TodayComponent() {
-  let counter = 60;
-  const secondsHandler = (counter) => {
-    setTimeout((counter) => counter--, 1000);
-  };
+  const products = useAppSelector((state) => state.products);
+  const dispatch = useAppDispatch();
   useEffect(() => {
-    console.log(products);
-  }, {});
+    dispatch(fetchProducts());
+  }, []);
   return (
     <div className="py-4 w-10/12 mx-auto flex flex-col gap-6 mt-6">
       <div className="flex gap-3 items-center">
@@ -29,53 +21,9 @@ export default function TodayComponent() {
         <h1 className="text-4xl font-semibold text-gray-900 my-auto">
           Flash Sales
         </h1>
-        <div className="grid grid-flow-col gap-5 text-center auto-cols-max">
-          <div className="flex flex-col">
-            days
-            <span className="countdown font-mono text-4xl">
-              <span style={{ "--value": 15 }}></span>
-            </span>
-          </div>
-          <div className="flex flex-col">
-            hours
-            <span className="countdown font-mono text-4xl">
-              <span style={{ "--value": 10 }}></span>
-            </span>
-          </div>
-          <div className="flex flex-col">
-            min
-            <span className="countdown font-mono text-4xl">
-              <span style={{ "--value": 24 }}></span>
-            </span>
-          </div>
-          <div className="flex flex-col">
-            sec
-            <span className="countdown font-mono text-4xl">
-              <span style={{ "--value": counter }}></span>
-            </span>
-          </div>
-        </div>
+        <CountDown />
       </div>
-      <Carousel className="w-full mx-auto">
-        <CarouselContent className="-ml-1">
-          {Array.from({ length: products.length / 3 }).map((_, index) => (
-            <CarouselItem
-              key={index}
-              className="pl-1 basis-1/2 md:basis-1/3 lg:basis-1/4"
-            >
-              <div className="p-1">
-                <CardComponent
-                  image={products[index].images[0]}
-                  title={products[index].title}
-                  price={products[index].price}
-                />
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
+      <ProductsComponent products={products} navigations={true} />
       <div className="flex w-full justify-center">
         <Button className="bg-red-600 w-56" size="lg">
           {" "}

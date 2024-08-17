@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "./Navbar/Page";
 import CarouselComponent from "./Carousel/page";
 import Footer from "./Footer/page";
+import StoreProvider from "./StoreProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,13 +14,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={`h-screen ${inter.className}`}>
-        <Navbar />
-        <CarouselComponent />
-        {children}
-        <Footer />
-      </body>
-    </html>
+    <StoreProvider>
+      <html lang="en">
+        <body className={`h-screen ${inter.className}`}>
+          <Navbar />
+          <CarouselComponent />
+          {children}
+          <Footer />
+        </body>
+      </html>
+    </StoreProvider>
   );
 }
