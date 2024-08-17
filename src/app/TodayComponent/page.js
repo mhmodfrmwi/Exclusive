@@ -2,9 +2,9 @@
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks.js";
-import CountDown from "./countDown.jsx";
 import ProductsComponent from "@/components/ui/ProductsComponent.jsx";
 import { fetchProducts } from "../rtk/products-slice.js";
+import CountDown from "./CountDown.js";
 export default function TodayComponent() {
   const products = useAppSelector((state) => state.products);
   const dispatch = useAppDispatch();
