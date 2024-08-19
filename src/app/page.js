@@ -7,9 +7,11 @@ import ImageComponent from "./ImageComponent/page";
 import OurProductsComponents from "./OurProductsComponent/page";
 import NewArrival from "./NewArrival/page";
 import CardComponent from "@/components/ui/CardComponent";
+import CarouselComponent from "./Carousel/page";
 export default function Home() {
   return (
     <div className="container gap-4">
+      <CarouselComponent />
       <TodayComponent />
       <CategoryComponent />
       <BestSellingComponent />

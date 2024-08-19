@@ -1,12 +1,5 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import CardComponent from "@/components/ui/CardComponent";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { useEffect } from "react";
 import { fetchProducts } from "../rtk/products-slice";

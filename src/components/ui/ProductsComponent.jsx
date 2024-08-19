@@ -31,7 +31,7 @@ const ProductsComponent = ({ products, navigations }) => {
             {Array.from({ length: products.length / 3 }).map((_, index) => (
               <CarouselItem
                 key={index}
-                className="pl-1 basis-1/2 md:basis-1/3 lg:basis-1/4"
+                className="pl-1 md:basis-1/3 lg:basis-1/4"
               >
                 <div className="p-1">
                   <CardComponent

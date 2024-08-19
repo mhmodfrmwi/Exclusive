@@ -44,22 +44,22 @@ const CardComponent = ({ image, title, price, product }) => {
           src={image}
           alt="product image"
           width={150}
-          height={100}
+          height={80}
           className="h-48 mx-auto"
         />
         <div className="absolute top-2 right-2 flex flex-col gap-3">
-          <p className="flex cursor-pointer bg-white rounded-3xl w-10 h-10 justify-center items-center">
+          <p className="flex cursor-pointer bg-white rounded-3xl w-7 h-7 justify-center items-center">
             <Heart
-              className={`w-6 h-6 cursor-pointer ${
+              className={`w-5 h-5 cursor-pointer ${
                 isLiked ? "text-red-500 fill-current" : ""
               }`}
               onClick={toggleLike}
             />
           </p>
-          <p className="flex cursor-pointer bg-white rounded-3xl w-10 h-10 justify-center items-center">
+          <p className="flex cursor-pointer bg-white rounded-3xl w-7 h-7 justify-center items-center">
             <Eye
-              className={`w-6 h-6 cursor-pointer ${
-                isViewed ? "text-blue-500 fill-current" : ""
+              className={`w-5 h-5 cursor-pointer ${
+                isViewed ? "text-gray-900 fill-current" : ""
               }`}
               onClick={toggleView}
             />
@@ -78,7 +78,7 @@ const CardComponent = ({ image, title, price, product }) => {
       </CardHeader>
 
       <CardContent className="mt-4">
-        <p className="text-base font-semibold">{title.slice(0, 24)}.</p>
+        <p className="text-base font-semibold">{title.slice(0, 12)}.</p>
         <p className="text-red-500 text-sm font-medium">
           ${price}
           {"   "}

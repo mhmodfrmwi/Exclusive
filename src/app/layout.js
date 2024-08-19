@@ -18,7 +18,6 @@ export default function RootLayout({ children }) {
       <html lang="en">
         <body className={`h-screen ${inter.className}`}>
           <Navbar />
-          <CarouselComponent />
           {children}
           <Footer />
         </body>

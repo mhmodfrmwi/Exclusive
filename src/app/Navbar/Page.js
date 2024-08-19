@@ -1,10 +1,8 @@
 "use client";
-
 import * as React from "react";
 import Link from "next/link";
 import { Heart, Menu, ShoppingCart } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
 export default function Navbar() {
   const [state, setState] = React.useState(false);
@@ -61,10 +59,14 @@ export default function Navbar() {
           <div className="flex gap-4">
             <Input type="text" placeholder="What are you looking for?" />
             <button>
-              <Heart className="w-6 h-6 text-black" />
+              <Link href={"/wishlist"}>
+                <Heart className="w-6 h-6 text-black" />
+              </Link>
             </button>
             <button>
-              <ShoppingCart className="w-6 h-6 text-black" />
+              <Link href={"/cart"}>
+                <ShoppingCart className="w-6 h-6 text-black" />
+              </Link>
             </button>
           </div>
         )}
