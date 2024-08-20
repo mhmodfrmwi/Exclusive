@@ -23,10 +23,7 @@ const BestSellingComponent = () => {
           Best Selling Products
         </h1>
         <RefreshLink href={"/products"}>
-          <Button className="bg-red-600 w-44 max-[430px]:w-auto">
-            {" "}
-            View All
-          </Button>
+          <Button className="bg-red-600 w-44"> View All</Button>
         </RefreshLink>
       </div>
       <ProductsComponent products={products} navigations={false} />
