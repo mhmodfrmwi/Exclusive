@@ -9,8 +9,9 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Loader from "@/components/ui/loader";
+import { cn } from "@/lib/utils";
 
-const ProductsComponent = ({ products, navigations }) => {
+const ProductsComponent = ({ products, navigations, className }) => {
   const [loading, setLoading] = useState(true); // Manage loading state
 
   useEffect(() => {
@@ -26,7 +27,7 @@ const ProductsComponent = ({ products, navigations }) => {
       {loading ? (
         <Loader />
       ) : (
-        <Carousel className="w-full mx-auto">
+        <Carousel className={cn("w-full mx-auto", className)}>
           <CarouselContent className="-ml-1">
             {products.map((product, index) => (
               <CarouselItem

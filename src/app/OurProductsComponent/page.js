@@ -10,6 +10,7 @@ import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { useEffect } from "react";
 import { fetchProducts } from "../rtk/products-slice";
 import ProductsComponent from "@/components/ui/ProductsComponent";
+import RefreshLink from "@/components/ui/refreshLink";
 const OurProductsComponents = () => {
   const products = useAppSelector((state) => state.products);
   const dispatch = useAppDispatch();
@@ -26,12 +27,14 @@ const OurProductsComponents = () => {
         Explore Our Products
       </h1>
       <ProductsComponent products={products} navigations={true} />
-      <ProductsComponent products={products} navigations={true}/>
+      <ProductsComponent products={products} navigations={true} />
       <div className="flex w-full justify-center">
-        <Button className="bg-red-600 w-56" size="lg">
-          {" "}
-          View All Products
-        </Button>
+        <RefreshLink href={"/products"}>
+          <Button className="bg-red-600 w-56" size="lg">
+            {" "}
+            View All Products
+          </Button>
+        </RefreshLink>
       </div>
     </div>
   );

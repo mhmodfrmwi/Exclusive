@@ -5,6 +5,7 @@ import ProductsComponent from "@/components/ui/ProductsComponent.jsx";
 import { fetchProducts } from "../rtk/products-slice.js";
 import CountDown from "./CountDown.js";
 import { useEffect } from "react";
+import RefreshLink from "@/components/ui/refreshLink.jsx";
 export default function TodayComponent() {
   const products = useAppSelector((state) => state.products);
   const dispatch = useAppDispatch();
@@ -25,10 +26,12 @@ export default function TodayComponent() {
       </div>
       <ProductsComponent products={products} navigations={true} />
       <div className="flex w-full justify-center">
-        <Button className="bg-red-600 w-56" size="lg">
-          {" "}
-          View All Products
-        </Button>
+        <RefreshLink href={"/products"}>
+          <Button className="bg-red-600 w-56" size="lg">
+            {" "}
+            View All Products
+          </Button>
+        </RefreshLink>
       </div>
     </div>
   );

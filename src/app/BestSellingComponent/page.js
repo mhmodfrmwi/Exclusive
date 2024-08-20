@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { useEffect } from "react";
 import { fetchProducts } from "../rtk/products-slice";
 import ProductsComponent from "@/components/ui/ProductsComponent";
+import RefreshLink from "@/components/ui/refreshLink";
 const BestSellingComponent = () => {
   const products = useAppSelector((state) => state.products);
   const dispatch = useAppDispatch();
@@ -21,10 +22,12 @@ const BestSellingComponent = () => {
         <h1 className="text-3xl font-semibold text-gray-900">
           Best Selling Products
         </h1>
-        <Button className="bg-red-600 w-48" size="lg">
-          {" "}
-          View All
-        </Button>
+        <RefreshLink href={"/products"}>
+          <Button className="bg-red-600 w-48" size="lg">
+            {" "}
+            View All
+          </Button>
+        </RefreshLink>
       </div>
       <ProductsComponent products={products} navigations={false} />
     </div>
