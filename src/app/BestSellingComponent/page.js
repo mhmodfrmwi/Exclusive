@@ -18,7 +18,7 @@ const BestSellingComponent = () => {
         <div className="w-5 h-10 rounded-sm bg-red-600"></div>
         <p className="font-semibold text-base text-red-600">This Month</p>
       </div>
-      <div className="flex justify-between">
+      <div className="flex justify-between max-[430px]:flex-col">
         <h1 className="text-3xl font-semibold text-gray-900">
           Best Selling Products
         </h1>
