@@ -8,7 +8,7 @@ import phone from "../../assets/icons-phone.svg";
 import mail from "../../assets/icons-mail.svg";
 const ContactForm = () => {
   return (
-    <div className="flex flex-col py-4 w-10/12 mx-auto gap-16 mt-6">
+    <div className="flex flex-col py-6 w-10/12 mx-auto gap-16 mt-6">
       <h1 className="text-stone-400">
         <Link href={"/"}>Home</Link>/<span className="text-black">Contact</span>
       </h1>

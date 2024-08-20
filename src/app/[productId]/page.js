@@ -61,7 +61,7 @@ const ProductPage = (props) => {
     console.log(data);
   };
   return (
-    <div className="py-4 w-10/12 mx-auto flex flex-col gap-4">
+    <div className="flex flex-col py-6 w-10/12 mx-auto gap-16 mt-6">
       {" "}
       <h1 className="text-stone-400">
         <Link href={"/"}>Home</Link>/
