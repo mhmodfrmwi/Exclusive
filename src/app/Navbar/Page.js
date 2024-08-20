@@ -2,11 +2,10 @@
 import * as React from "react";
 import Link from "next/link";
 import { Heart, Menu, ShoppingCart } from "lucide-react";
-import { Input } from "@/components/ui/input";
 import { useEffect } from "react";
 import RefreshLink from "@/components/ui/refreshLink";
 export default function Navbar() {
-  const [state, setState] = React.useState(false);
+  const [state, setState] = React.useState(true);
 
   const menus = [
     { title: "Home", path: "/" },
@@ -16,17 +15,19 @@ export default function Navbar() {
   ];
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 768) {
+      if (window.innerWidth >= 1024) {
         setState(true);
       } else {
         setState(false);
       }
     };
+
     handleResize();
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
   return (
     <nav className={`bg-white w-full border-b min-[820px]:border-0 shadow p-2`}>
       <div className="items-center px-4 max-w-screen-xl mx-auto min-[820px]:flex min-[820px]:px-8">
