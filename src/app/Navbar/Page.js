@@ -58,7 +58,6 @@ export default function Navbar() {
         </div>
         {state && (
           <div className="flex gap-4">
-            <Input type="text" placeholder="What are you looking for?" />
             <button>
               <Link href={"/wishlist"}>
                 <Heart className="w-6 h-6 text-black" />
