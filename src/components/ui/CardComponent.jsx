@@ -16,27 +16,55 @@ import {
   addToWatchLater,
   deleteFromWatchLater,
 } from "@/app/rtk/watchLater-slice";
+import { fetchFromLocalStorage, saveToLocalStorage } from "@/lib/utils";
 const CardComponent = ({ image, title, price, product }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [isViewed, setIsViewed] = useState(false);
   const dispatch = useDispatch();
   const toggleLike = () => {
     setIsLiked(!isLiked);
+    let data = fetchFromLocalStorage("wishlist");
+
     if (!isLiked) {
       dispatch(addToFavourite(product));
+      data.push(product);
     } else {
       dispatch(deleteFromFavourite(product));
+      data.filter((element) => element !== product);
     }
+    saveToLocalStorage("wishlist", data);
   };
 
   const toggleView = () => {
     setIsViewed(!isViewed);
+    let data = fetchFromLocalStorage("watchLater");
     if (!isViewed) {
       dispatch(addToWatchLater(product));
+      data.push(product);
     } else {
       dispatch(deleteFromWatchLater(product));
+      data.filter((element) => element !== product);
     }
+    saveToLocalStorage("watchLater", data);
   };
+  const handleCart = () => {
+    let data = fetchFromLocalStorage("cart");
+    const checkFound = data.find((element) => element.title === product.title);
+    if (checkFound) {
+      checkFound.quantity += 1;
+    } else {
+      const updatedProduct = {
+        quantity: 1,
+        ...product,
+      };
+      data.push(updatedProduct);
+    }
+    saveToLocalStorage("cart", data);
+    dispatch(addToCart(data));
+
+    console.log(data);
+  };
+
   return (
     <Card className="group relative">
       <CardHeader className="relative bg-slate-100">
@@ -70,7 +98,7 @@ const CardComponent = ({ image, title, price, product }) => {
         </div>
         {/* Add to Cart button */}
         <p
-          onClick={() => dispatch(addToCart(product))}
+          onClick={handleCart}
           className="absolute bottom-0 left-0 right-0 flex bg-black text-white w-full h-10 text-center justify-center items-center cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-300"
         >
           Add to cart

@@ -1,7 +1,9 @@
+import { fetchFromLocalStorage } from "@/lib/utils";
+
 const { createSlice } = require("@reduxjs/toolkit");
 
 const watchLaterSlice = createSlice({
-  initialState: [],
+  initialState: fetchFromLocalStorage("watchLater") || [],
   name: "watchLaterSlice",
   reducers: {
     addToWatchLater: (state, action) => {

@@ -1,7 +1,9 @@
+import { fetchFromLocalStorage } from "@/lib/utils";
+
 const { createSlice } = require("@reduxjs/toolkit");
 
 const favouriteSlice = createSlice({
-  initialState: [],
+  initialState: fetchFromLocalStorage("wishlist") || [],
   name: "favouriteSlice",
   reducers: {
     addToFavourite: (state, action) => {

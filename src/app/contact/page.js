@@ -12,8 +12,8 @@ const ContactForm = () => {
       <h1 className="text-stone-400">
         <Link href={"/"}>Home</Link>/<span className="text-black">Contact</span>
       </h1>
-      <div className="flex gap-8">
-        <Card className="w-1/3 p-6">
+      <div className="flex gap-8 max-[770px]:flex-col">
+        <Card className="w-1/3 p-6 max-[770px]:w-full">
           <CardHeader>
             <CardTitle className="flex items-center gap-4">
               <Image src={phone} alt="Phone call" />
@@ -37,7 +37,7 @@ const ContactForm = () => {
             <p>Emails: support@exclusive.com</p>
           </CardContent>
         </Card>
-        <Card className="w-2/3 p-6">
+        <Card className="w-2/3 p-6 max-[770px]:w-full">
           <form className="flex flex-col gap-6">
             <div className="flex gap-4">
               <Input placeholder="Your Name *" className="w-1/3" />

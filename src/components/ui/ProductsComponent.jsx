@@ -16,7 +16,7 @@ const ProductsComponent = ({ products, navigations }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false); // Set loading to false after 2 seconds
-    }, 2000);
+    }, 500);
 
     return () => clearTimeout(timer); // Clean up the timer on component unmount
   }, []);
@@ -28,17 +28,17 @@ const ProductsComponent = ({ products, navigations }) => {
       ) : (
         <Carousel className="w-full mx-auto">
           <CarouselContent className="-ml-1">
-            {Array.from({ length: products.length / 3 }).map((_, index) => (
+            {products.map((product, index) => (
               <CarouselItem
-                key={index}
-                className="pl-1 md:basis-1/3 lg:basis-1/4"
+                key={product.id}
+                className="pl-1 md:basis-1/2 lg:basis-1/4"
               >
                 <div className="p-1">
                   <CardComponent
-                    image={products[index].images[0]}
-                    title={products[index].title}
-                    price={products[index].price}
-                    product={products[index]}
+                    image={product.images[0]}
+                    title={product.title}
+                    price={product.price}
+                    product={product}
                   />
                 </div>
               </CarouselItem>

@@ -36,7 +36,7 @@ const About = () => {
             consumer.
           </p>
         </div>
-        <Image src={ecommerceImage} className="w-96 h-80" />
+        <Image src={ecommerceImage} className="w-96 h-80 max-[770px]:w-full" />
       </div>
       <CardsComponent />
       <ManagersComponent />
