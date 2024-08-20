@@ -11,6 +11,7 @@ import SizeSelector from "./SizeSelector";
 import Link from "next/link";
 import { fetchFromLocalStorage, saveToLocalStorage } from "@/lib/utils";
 import { addToFavourite, deleteFromFavourite } from "../rtk/favourite-slice";
+import { addToCart } from "../rtk/cart-slice";
 
 const ProductPage = (props) => {
   const productId = +props.params.productId;
@@ -22,8 +23,6 @@ const ProductPage = (props) => {
     dispatch(fetchProducts());
   }, []);
   const [quantity, setQuantity] = useState(1);
-  const [selectedColor, setSelectedColor] = useState("blue");
-  const [selectedSize, setSelectedSize] = useState("M");
   const [isLiked, setIsLiked] = useState(false);
   const toggleLike = () => {
     setIsLiked(!isLiked);
@@ -45,6 +44,22 @@ const ProductPage = (props) => {
   const imageHandler = (image) => {
     setImage(image);
   };
+  const handleCart = () => {
+    let data = fetchFromLocalStorage("cart");
+    const checkFound = data.find((element) => element.title === product.title);
+    if (checkFound) {
+      checkFound.quantity += quantity;
+    } else {
+      const updatedProduct = {
+        quantity: 1,
+        ...product,
+      };
+      data.push(updatedProduct);
+    }
+    saveToLocalStorage("cart", data);
+    dispatch(addToCart(data));
+    console.log(data);
+  };
   return (
     <div className="py-4 w-10/12 mx-auto flex flex-col gap-4">
       {" "}
@@ -52,46 +67,46 @@ const ProductPage = (props) => {
         <Link href={"/"}>Home</Link>/
         <span className="text-black">{product?.title}</span>
       </h1>
-      <div className="container mx-auto p-4 grid grid-cols-1 md:grid-cols-2 gap-8 text-black">
-        <div className="flex flex-col gap-4">
+      <div className="container mx-auto p-4 grid grid-cols-1 md:grid-cols-2 gap-8 text-black items-center">
+        <div className="flex flex-col gap-4 items-center">
           <Image
             src={product?.images[image] || product?.images[0]}
             alt="Main product"
             width={500}
             height={500}
-            className="object-contain"
+            className="object-contain bg-slate-100"
           />
           <div className="grid grid-cols-4 gap-2">
             <Image
               src={product?.images[0]}
               alt="Product thumbnail"
-              width={100}
-              height={100}
-              className="object-contain cursor-pointer"
+              width={200}
+              height={200}
+              className="object-contain cursor-pointer bg-slate-100"
               onClick={() => imageHandler(0)}
             />
             <Image
               src={product?.images[1] ? product?.images[1] : product?.images[0]} // Replace with actual image path
               alt="Product thumbnail"
-              width={100}
-              height={100}
-              className="object-contain cursor-pointer"
+              width={200}
+              height={200}
+              className="object-contain cursor-pointer bg-slate-100"
               onClick={() => imageHandler(1)}
             />
             <Image
               src={product?.images[2] ? product?.images[2] : product?.images[0]} // Replace with actual image path
               alt="Product thumbnail"
-              width={100}
-              height={100}
-              className="object-contain cursor-pointer"
+              width={200}
+              height={200}
+              className="object-contain cursor-pointer bg-slate-100"
               onClick={() => imageHandler(2)}
             />
             <Image
               src={product?.images[3] ? product?.images[3] : product?.images[0]} // Replace with actual image path
               alt="Product thumbnail"
-              width={100}
-              height={100}
-              className="object-contain cursor-pointer"
+              width={200}
+              height={200}
+              className="object-contain cursor-pointer bg-slate-100"
               onClick={() => imageHandler(3)}
             />
           </div>
@@ -127,7 +142,7 @@ const ProductPage = (props) => {
                 <Input
                   type="number"
                   value={quantity}
-                  className="w-12 text-center border-0"
+                  className="w-14 text-center border-0"
                   readOnly
                 />
                 <Button
@@ -138,7 +153,9 @@ const ProductPage = (props) => {
                 </Button>
               </div>
               <div className="flex gap-2">
-                <Button className="bg-red-500 text-white">Buy Now</Button>
+                <Button className="bg-red-500 text-white" onClick={handleCart}>
+                  Buy Now
+                </Button>
                 <Button variant="outline">
                   <Heart
                     className={`w-6 h-6 cursor-pointer ${
