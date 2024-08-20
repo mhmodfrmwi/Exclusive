@@ -23,7 +23,7 @@ const BestSellingComponent = () => {
           Best Selling Products
         </h1>
         <RefreshLink href={"/products"}>
-          <Button className="bg-red-600 w-48" size="lg">
+          <Button className="bg-red-600 w-44 max-[430px]:w-auto">
             {" "}
             View All
           </Button>
