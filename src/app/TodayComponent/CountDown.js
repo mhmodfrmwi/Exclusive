@@ -35,14 +35,14 @@ const CountDown = () => {
 
   return (
     <div className="flex flex-col items-center gap-2">
-      <div className="flex gap-8">
+      <div className="flex gap-6">
         {["Days", "Hours", "Minutes", "Seconds"].map((label, index) => (
           <div key={index} className="flex flex-col items-center">
             <p className="text-sm text-black font-semibold">{label}</p>
           </div>
         ))}
       </div>
-      <div className="flex gap-4 items-center">
+      <div className="flex gap-2 items-center">
         {["days", "hours", "minutes", "seconds"].map((unit, index) => (
           <React.Fragment key={index}>
             <span className="countdown font-mono text-3xl text-black font-semibold">
