@@ -17,6 +17,7 @@ import {
   deleteFromWatchLater,
 } from "@/app/rtk/watchLater-slice";
 import { fetchFromLocalStorage, saveToLocalStorage } from "@/lib/utils";
+import RefreshLink from "./refreshLink";
 const CardComponent = ({ image, title, price, product }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [isViewed, setIsViewed] = useState(false);
@@ -68,13 +69,15 @@ const CardComponent = ({ image, title, price, product }) => {
   return (
     <Card className="group relative">
       <CardHeader className="relative bg-slate-100">
-        <Image
-          src={image}
-          alt="product image"
-          width={150}
-          height={80}
-          className="h-48 mx-auto"
-        />
+        <RefreshLink href={`/${product.id}`} className="cursor-pointer">
+          <Image
+            src={image}
+            alt="product image"
+            width={150}
+            height={80}
+            className="h-48 mx-auto"
+          />
+        </RefreshLink>
         <div className="absolute top-2 right-2 flex flex-col gap-3">
           <p className="flex cursor-pointer bg-white rounded-3xl w-7 h-7 justify-center items-center">
             <Heart
@@ -104,20 +107,21 @@ const CardComponent = ({ image, title, price, product }) => {
           Add to cart
         </p>
       </CardHeader>
-
-      <CardContent className="mt-4">
-        <p className="text-base font-semibold">{title.slice(0, 12)}.</p>
-        <p className="text-red-500 text-sm font-medium">
-          ${price}
-          {"   "}
-          <span className="line-through text-gray-500">
-            ${(price + price * 0.3).toFixed(2)}
-          </span>
-        </p>
-      </CardContent>
-      <CardFooter>
-        <BasicRating /> <span>(70)</span>
-      </CardFooter>
+      <RefreshLink href={`/${product.id}`} className="cursor-pointer">
+        <CardContent className="mt-4">
+          <p className="text-base font-semibold">{title.slice(0, 12)}.</p>
+          <p className="text-red-500 text-sm font-medium">
+            ${price}
+            {"   "}
+            <span className="line-through text-gray-500">
+              ${(price + price * 0.3).toFixed(2)}
+            </span>
+          </p>
+        </CardContent>
+        <CardFooter>
+          <BasicRating /> <span>(70)</span>
+        </CardFooter>
+      </RefreshLink>
     </Card>
   );
 };
