@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Heart, Menu, ShoppingCart } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useEffect } from "react";
+import RefreshLink from "@/components/ui/refreshLink";
 export default function Navbar() {
   const [state, setState] = React.useState(false);
 
@@ -64,9 +65,9 @@ export default function Navbar() {
               </Link>
             </button>
             <button>
-              <Link href={"/cart"}>
+              <RefreshLink href={"/cart"}>
                 <ShoppingCart className="w-6 h-6 text-black" />
-              </Link>
+              </RefreshLink>
             </button>
           </div>
         )}
